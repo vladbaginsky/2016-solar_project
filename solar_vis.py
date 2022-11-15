@@ -48,13 +48,12 @@ def scale_y(y):
     В случае выхода **y** координаты за пределы экрана возвращает
     координату, лежащую за пределами холста.
     Направление оси развёрнуто, чтобы у модели ось **y** смотрела вверх.
-
     Параметры:
 
     **y** — y-координата модели.
     """
 
-    return y  # FIXME: not done yet
+    return int(y*scale_factor) + window_height//2
 
 
 def create_star_image(space, star):
