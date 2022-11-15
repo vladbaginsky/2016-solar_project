@@ -92,7 +92,7 @@ def write_space_objects_data_to_file(output_filename, space_objects):
 
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            out_file.write(obj.type, obj.R, obj.color, obj.m, obj.x,obj.y,obj.Vx,obj.Vy )
+            out_file.write(obj.R, obj.color, obj.m, obj.x,obj.y,obj.Vx,obj.Vy )
 
 
 # FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
