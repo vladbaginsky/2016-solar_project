@@ -4,7 +4,7 @@
 from solar_objects import Star, Planet
 
 
-def read_space_objects_data_from_file(input_filename):
+def read_space_objects_data_from_file(input_filename, screen):
     """Cчитывает данные о космических объектах из файла, создаёт сами объекты
     и вызывает создание их графических образов
 
@@ -19,10 +19,14 @@ def read_space_objects_data_from_file(input_filename):
             if len(line.strip()) == 0 or line[0] == '#':
                 continue  # пустые строки и строки-комментарии пропускаем
             object_type = line.split()[0].lower()
-            if object_type == "star":  # FIXME: do the same for planet
-                star = Star()
+            if object_type == "star":
+                star = Star(screen)
                 parse_star_parameters(line, star)
                 objects.append(star)
+            elif object_type == "planet":
+                planet = Planet(screen)
+                parse_planet_parameters(line, planet)
+                objects.append(planet)
             else:
                 print("Unknown space object")
 
@@ -44,14 +48,13 @@ def parse_star_parameters(line, star):
     **star** — объект звезды.
     """
     params = line.split()
-    star = line.split()
-    star.R = int(params[1])
+    star.R = float(params[1])
     star.color = params[2]
-    star.m = int(params[3])
-    star.x = int(params[4])
-    star.y = int(params[5])
-    star.Vx = int(params[6])
-    star.Vy = int(params[7])
+    star.m = float(params[3])
+    star.x = float(params[4])
+    star.y = float(params[5])
+    star.Vx = float(params[6])
+    star.Vy = float(params[7])
 
 def parse_planet_parameters(line, planet):
     """Считывает данные о планете из строки.
@@ -70,13 +73,13 @@ def parse_planet_parameters(line, planet):
     """
     
     params = line.split()
-    planet.R = int(params[1])
+    planet.R = float(params[1])
     planet.color = params[2]
-    planet.m = int(params[3])
-    planet.x = int(params[4])
-    planet.y = int(params[5])
-    planet.Vx = int(params[6])
-    planet.Vy = int(params[7])
+    planet.m = float(params[3])
+    planet.x = float(params[4])
+    planet.y = float(params[5])
+    planet.Vx = float(params[6])
+    planet.Vy = float(params[7])
 
 def write_space_objects_data_to_file(output_filename, space_objects):
     """Сохраняет данные о космических объектах в файл.
