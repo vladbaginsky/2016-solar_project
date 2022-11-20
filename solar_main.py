@@ -60,7 +60,7 @@ while not finished:
         # print(obj.Vx)
     # print(space_objects[0].Vy)
     pygame.display.update()
-    recalculate_space_objects_positions(space_objects, dt*600)
+    recalculate_space_objects_positions(space_objects, dt*610)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
