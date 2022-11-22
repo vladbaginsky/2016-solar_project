@@ -47,7 +47,7 @@ while not finished:
 
     dt = clock.tick()
 
-    clock.tick(FPS)
+    # clock.tick(FPS)
     for obj in space_objects:
         pygame.draw.circle(
             obj.screen,
@@ -60,8 +60,9 @@ while not finished:
         # print(obj.Vx)
     # print(space_objects[0].Vy)
     pygame.display.update()
-    recalculate_space_objects_positions(space_objects, dt*610)
-
+    for i in range(300):
+        recalculate_space_objects_positions(space_objects, dt)
+    clock.tick(300*dt)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = True
