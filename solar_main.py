@@ -35,8 +35,8 @@ clock = pygame.time.Clock()
 pygame.init()
 screen = pygame.display.set_mode((window_width, window_height))
 
-space_objects = read_space_objects_data_from_file('double_star.txt', screen)
-calculate_scale_factor(1E10)
+space_objects = read_space_objects_data_from_file('solar_system.txt', screen)
+calculate_scale_factor(3000E9)
 
 finished = False
 
@@ -60,9 +60,9 @@ while not finished:
         # print(obj.Vx)
     # print(space_objects[0].Vy)
     pygame.display.update()
-    for i in range(300):
-        recalculate_space_objects_positions(space_objects, dt)
-    clock.tick(300*dt)
+    for i in range(1000):
+        recalculate_space_objects_positions(space_objects, dt*250)
+    clock.tick(1000*dt)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             finished = True
